@@ -1,0 +1,52 @@
+[
+    {
+        "id": 1,
+        "name": "Wireless Headphones",
+        "description": "Immersive sound with deep bass and crystal-clear highs. Bluetooth 5.0 for stable connection. 20 hours of playtime. Comfortable over-ear design."
+    },
+    {
+        "id": 2,
+        "name": "Ergonomic Office Chair",
+        "description": "Adjustable height, lumbar support, and breathable mesh back. Promotes proper posture and all-day comfort. Durable construction."
+    },
+    {
+        "id": 3,
+        "name": "Stainless Steel Water Bottle",
+        "description": "Keeps drinks cold for 24 hours and hot for 12 hours. Leak-proof design. BPA-free and eco-friendly."
+    },
+    {
+        "id": 4,
+        "name": "Men's Running Shoes",
+        "description": "Lightweight and breathable. Cushioned sole for impact absorption. Provides excellent support and stability. Available in various sizes and colors."
+    },
+    {
+        "id": 5,
+        "name": "Women's Yoga Leggings",
+        "description": "High-waisted and stretchy. Moisture-wicking fabric. Provides a comfortable and flattering fit. Perfect for yoga, workouts, or everyday wear."
+    },
+    {
+        "id": 6,
+        "name": "Smartwatch with Heart Rate Monitor",
+        "description": "Tracks steps, calories burned, and sleep quality. Built-in heart rate monitor. Notifications for calls and messages. Water-resistant."
+    },
+    {
+        "id": 7,
+        "name": "Bluetooth Speaker - Portable & Waterproof",
+        "description": "Powerful sound in a compact design. Waterproof and durable. Perfect for outdoor activities. Long battery life."
+    },
+    {
+        "id": 8,
+        "name": "Organic Cotton T-shirt",
+        "description": "Soft and comfortable. Made from 100% organic cotton. Classic fit. Available in various colors."
+    },
+    {
+        "id": 9,
+        "name": "Coffee Maker - Automatic Drip",
+        "description": "Programmable timer. Brews up to 12 cups. Easy to use and clean. Perfect for coffee lovers."
+    },
+    {
+        "id": 10,
+        "name": "Noise Cancelling Headphones",
+        "description": "Active noise cancellation blocks out unwanted sounds. Immersive audio experience. Comfortable earcups. Ideal for travel and work."
+    }
+]

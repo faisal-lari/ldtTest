@@ -1,0 +1,32 @@
+<div>
+  <input type="text" [(ngModel)]="searchText" (keyup)="productSubject.next(searchText)" placeholder="Search">
+  <!-- <input type="text" #searchInput> -->
+</div>
+<br>
+<div>
+  <form [formGroup]="productForm" (ngSubmit)="submitForm()">
+    <table border="1">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody formArrayName="product">
+        <tr *ngFor="let product of products.controls; let i = index" [formGroupName]="i">
+          <td><input type="number" formControlName="id" placeholder="Id"></td>
+          <td><input type="text" formControlName="name" placeholder="Name"></td>
+          <td><input type="text" formControlName="description" placeholder="Description"></td>
+          <td>
+            <button type="button" (click)="removeProducts(i)">Remove</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <button type="button" (click)="addProducts()">Add User</button>
+    <button type="submit">Submit</button>
+  </form>
+
+</div>
