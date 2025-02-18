@@ -1,6 +1,5 @@
 <div>
   <input type="text" [(ngModel)]="searchText" (keyup)="productSubject.next(searchText)" placeholder="Search">
-  <!-- <input type="text" #searchInput> -->
 </div>
 <br>
 <div>
@@ -25,7 +24,8 @@
         </tr>
       </tbody>
     </table>
-    <button type="button" (click)="addProducts()">Add User</button>
+    <br>
+    <button type="button" (click)="addRow()">Add Row</button>
     <button type="submit">Submit</button>
   </form>
 

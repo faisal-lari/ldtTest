@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { debounceTime, fromEvent, Subject, Subscription } from 'rxjs';
+import { debounceTime, Subject, Subscription } from 'rxjs';
 
 
 
@@ -14,7 +14,7 @@ import { debounceTime, fromEvent, Subject, Subscription } from 'rxjs';
   styleUrl: './app.component.scss'
 })
 export class AppComponent implements OnInit, OnDestroy {
-
+  //Global Properties
   searchText: string = "";
   productForm!: FormGroup;
   productSubject: Subject<string> = new Subject<string>();
@@ -22,13 +22,14 @@ export class AppComponent implements OnInit, OnDestroy {
   productSearchSubscription: Subscription = new Subscription;
 
   // Sample JSON Data
-  jsonData: Array<{ id: number, name: string, description: string }> = new Array();
-
+  jsonData: Array<{ id: number | null, name: string, description: string }> = new Array();
   allJsonData = new Array();
 
   constructor(private fb: FormBuilder, private httpClient: HttpClient) { }
 
   ngOnInit(): void {
+
+    //debounce logic
     this.productSearchSubscription = this.productSubject.pipe(debounceTime(800)).subscribe((res: string) => {
       this.filterData(res);
     })
@@ -42,6 +43,7 @@ export class AppComponent implements OnInit, OnDestroy {
     this.productSearchSubscription.unsubscribe();
   }
 
+  //form creation
   public createForm() {
     this.productForm = this.fb.group({
       product: this.fb.array([])
@@ -53,7 +55,7 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   public loadJsonData() {
-    this.jsonData.forEach((product: { id: number, name: string, description: string }) => {
+    this.jsonData.forEach((product: { id: number | null, name: string, description: string }) => {
       this.products.push(this.fb.group({
         id: [product.id],
         name: [product.name],
@@ -62,12 +64,16 @@ export class AppComponent implements OnInit, OnDestroy {
     });
   }
 
-  public addProducts() {
-    this.products.push(this.fb.group({
+  public addRow() {
+    const newProduct = this.fb.group({
       id: [null],
       name: [""],
       description: [""]
-    }));
+    });
+
+    this.products.push(newProduct);
+    this.jsonData.push({ id: null, name: "", description: "" });
+    this.allJsonData = [...this.jsonData];
   }
 
   public removeProducts(index: number) {
@@ -75,7 +81,13 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   public submitForm() {
-
+    if (this.productForm.valid) {
+      this.jsonData = this.productForm.value.product;
+      this.allJsonData = [...this.jsonData]; // Updating the backup data
+      console.log("Submitted Data:", this.jsonData);
+    } else {
+      console.error("Form is invalid. Please fill in required fields.");
+    }
   }
 
   public filterData(str: string) {
